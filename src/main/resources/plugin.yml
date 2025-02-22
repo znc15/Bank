@@ -1,0 +1,41 @@
+name: Bank
+version: '${project.version}'
+main: org.littlesheep.bank.Bank
+api-version: '1.20'
+authors: [LittleSheep]
+description: BankBank!
+depend: [Vault]
+softdepend: [PlaceholderAPI]
+
+commands:
+  bank:
+    description: 银行命令
+
+permissions:
+  # 管理员权限组
+  bank.admin:
+    description: 允许使用所有银行管理命令
+    default: op
+    children:
+      bank.admin.balance: true
+      bank.admin.loan: true
+      bank.admin.log: true
+      
+  # 管理员子权限
+  bank.admin.balance:
+    description: 允许管理玩家存款
+    default: op
+  bank.admin.loan:
+    description: 允许管理玩家贷款
+    default: op
+  bank.admin.log:
+    description: 允许查看操作日志
+    default: op
+  bank.admin.reload:
+    description: 允许重新加载插件配置
+    default: op
+    
+  # 玩家权限
+  bank.confirm:
+    description: 允许确认取出定期存款
+    default: true

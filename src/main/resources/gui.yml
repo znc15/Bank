@@ -1,0 +1,119 @@
+main-menu:
+  title: "§1§l✦ 银行系统 ✦"
+  size: 54  # 扩大界面
+  items:
+    player-info:
+      material: "PLAYER_HEAD"
+      name: "§b✧ %bank_name% 的账户信息"
+      slot: 4
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 会员等级: §e%bank_level%"
+        - "§f◇ 现金余额: §a$%bank_cash%"
+        - "§f◇ 活期存款: §a$%bank_balance%"
+        - "§f◇ 定期存款: §a$%bank_time_deposit%"
+        - "§f◇ 总资产: §6$%bank_total_balance%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 会员加息: §e+%bank_bonus%%"
+        - "§f◇ 存款时长: §e%bank_time_deposit_days%天"
+        - "§f◇ 存款类型: §e%bank_time_deposit_period%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    
+    demand-deposit:
+      material: "GOLD_INGOT"
+      name: "§e✧ 活期存款"
+      slot: 20
+      glow: true
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 当前余额: §a$%bank_balance%"
+        - "§f◇ 基准利率: §e%bank_demand_rate%% §7(年化)"
+        - "§f◇ 实际利率: §e%bank_demand_rate%+%bank_bonus%% §7(含会员加息)"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§a➥ 左键点击存款"
+        - "§c➥ 右键点击取款"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    
+    time-deposit:
+      material: "DIAMOND"
+      name: "§b✧ 定期存款"
+      slot: 22
+      glow: true
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 当前余额: §a$%bank_balance%"
+        - "§f◇ 存款类型: §e%bank_time_deposit_period%"
+        - "§f◇ 存期天数: §e%bank_time_deposit_days%天"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 七日年化: §e%bank_week_rate%% §7(+%bank_bonus%%)"
+        - "§f◇ 月存年化: §e%bank_month_rate%% §7(+%bank_bonus%%)"
+        - "§f◇ 年存年化: §e%bank_year_rate%% §7(+%bank_bonus%%)"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§a➥ 左键点击存款"
+        - "§c➥ 右键点击取款"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+    
+    rates:
+      material: BOOK
+      name: "§a✧ 利率查询"
+      slot: 24
+      glow: true
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 活期利率: §e%bank_demand_rate%%"
+        - "§f◇ 七日年化: §e%bank_week_rate%%"
+        - "§f◇ 月存年化: §e%bank_month_rate%%"
+        - "§f◇ 年存年化: §e%bank_year_rate%%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 会员加息: §e+%bank_bonus%%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§e➥ 点击查看详细利率信息"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+
+    loan:
+      material: "EMERALD"
+      name: "§a✧ 贷款服务"
+      slot: 31
+      glow: true
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 当前贷款: §c$%bank_loan_amount%"
+        - "§f◇ 剩余天数: §e%bank_loan_days%天"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 基准利率: §e%bank_loan_rate%%"
+        - "§f◇ 会员优惠: §a%bank_level%等级 (-%bank_bonus%%)"
+        - "§f◇ 实际利率: §e%bank_loan_rate%-%bank_bonus%%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§a➥ 左键申请贷款"
+        - "§c➥ 右键还款"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+
+    membership-info:
+      material: NETHER_STAR
+      name: "§6✧ 会员权益"
+      slot: 49
+      glow: true
+      lore:
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 当前等级: §e%bank_level%"
+        - "§f◇ 存款加息: §a+%bank_bonus%%"
+        - "§f◇ 贷款优惠: §a-%bank_bonus%%"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+        - "§f◇ 升级条件:"
+        - "§7  ▪ 青铜: §e$10,000"
+        - "§7  ▪ 白银: §e$50,000"
+        - "§7  ▪ 黄金: §e$100,000"
+        - "§7  ▪ 白金: §e$500,000"
+        - "§7  ▪ 钻石: §e$1,000,000"
+        - "§7▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+
+decorations:
+  border:
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
+    slots: [0,1,2,3,5,6,7,8,9,17,18,26,27,35,36,44,45,46,47,48,50,51,52,53]
+  
+  separator:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+    slots: [19,21,23,25,28,29,30,32,33,34] 

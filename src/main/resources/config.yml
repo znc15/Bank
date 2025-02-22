@@ -1,0 +1,212 @@
+#====================
+# 基础设置
+#====================
+settings:
+  # 系统语言设置 (当前支持: 简体中文-zh_cn, 英文-en_us)
+  language: "zh_cn"
+  # 是否启用插件使用数据统计
+  metrics: true
+  # 是否启用调试模式（开启后会输出详细日志）
+  debug: false
+  # 时间计算方式
+  # REAL: 使用现实时间计算
+  # GAME: 使用游戏内时间计算
+  time-type: "REAL"
+  # 日志保留天数
+  log:
+  retention-days: 30
+  # 语言文件设置
+  language-file-encoding: "UTF-8"
+
+#====================
+# 数据存储配置
+#====================
+# 可选存储类型：
+# - JSON: 使用JSON文件存储
+# - DB: 使用SQLite数据库存储
+# - MYSQL: 使用MySQL数据库存储
+storage-type: DB
+
+# MySQL数据库连接配置
+mysql:
+  host: localhost          # 数据库地址
+  port: 3306              # 数据库端口
+  database: minecraft     # 数据库名称
+  username: root          # 数据库用户名
+  password: password      # 数据库密码
+  table: bank_accounts    # 数据表名称
+
+#====================
+# 利息系统设置
+#====================
+interest:
+  # 活期存款配置
+  demand:
+    annual-rate: 1.5      # 基础年利率(%)
+    # 不同存期对应的利率(%)
+    period-rates:
+      week: 1.0          # 周存利率
+      month: 1.5         # 月存利率
+      year: 2.0          # 年存利率
+    minimum-balance: 1000.0  # 起息最低余额
+
+  # 定期存款配置
+  time:
+    # 不同存期类型的详细配置
+    period-rates:
+      week:
+        days: 7          # 一周定存天数
+        rate: 2.0        # 年化利率(%)
+      month:
+        days: 30         # 一月定存天数
+        rate: 2.5        # 年化利率(%)
+      year:
+        days: 365        # 一年定存天数
+        rate: 3.0        # 年化利率(%)
+
+  # 动态利率系统配置
+  dynamic-rate:
+    enabled: false       # 是否启用动态利率
+    update-interval: 24  # 利率更新间隔(小时)
+    include-time-deposits: true  # 计算总存款时是否计入定期存款
+    
+    # 活期存款利率范围
+    demand:
+      base-rate: 1.5     # 基准利率(%)
+      min-rate: 0.8      # 最低利率(%)
+      max-rate: 2.5      # 最高利率(%)
+    
+    # 定期存款各期限利率范围
+    time:
+      week:
+        base-rate: 2.0   # 周存基准利率
+        min-rate: 1.5    # 最低利率
+        max-rate: 2.5    # 最高利率
+      month:
+        base-rate: 2.5
+        min-rate: 2.0
+        max-rate: 3.0
+      year:
+        base-rate: 3.0
+        min-rate: 2.5
+        max-rate: 3.5
+    
+    # 利率调整阈值（总存款金额）
+    thresholds:
+      low: 100000        # 低存款阈值
+      high: 1000000      # 高存款阈值
+    
+    # 利率调整幅度
+    adjustment:
+      increase: 0.5      # 上调幅度(%)
+      decrease: 0.3      # 下调幅度(%)
+
+  # 利息结算时间（24小时制，0表示凌晨12点）
+  payout-hour: 0
+
+#====================
+# 会员等级系统
+#====================
+membership:
+  enabled: true          # 是否启用会员系统
+  # 各等级详细配置
+  levels:
+    bronze:              # 青铜会员
+      requirement: 10000  # 达到要求的存款额
+      bonus-rate: 0.5    # 额外加息(%)
+    silver:              # 白银会员
+      requirement: 50000
+      bonus-rate: 1.0
+    gold:                # 黄金会员
+      requirement: 100000
+      bonus-rate: 1.5
+    platinum:            # 白金会员
+      requirement: 500000
+      bonus-rate: 2.0
+    diamond:             # 钻石会员
+      requirement: 1000000
+      bonus-rate: 3.0
+
+#====================
+# 贷款系统设置
+#====================
+loan:
+  enabled: true         # 是否启用贷款功能
+  # 贷款模式：
+  # - cumulative: 额度累加模式
+  # - level: 等级独立额度模式
+  mode: "cumulative"    
+  max-amount: 100000    # 单笔最大贷款额度
+  # 利息计算方式：
+  # - daily: 按日计息
+  # - yearly: 按年计息
+  interest-type: daily  
+  base-rate: 15.0      # 基础利率(%)
+  max-days: 30         # 最长贷款期限(天)
+
+  # 贷款申请条件
+  requirements:
+    min-balance: 1000   # 最低存款要求
+    min-level: bronze   # 最低会员等级要求
+
+  # 贷款动态利率设置
+  dynamic-rate:
+    enabled: true
+    min-rate: 12.0      # 最低利率(%)
+    max-rate: 20.0      # 最高利率(%)
+    update-interval: 12 # 更新间隔(小时)
+
+  # 各等级贷款额度限制
+  membership-limits:
+    none: 0            # 普通用户
+    bronze: 10000      # 青铜会员
+    silver: 50000      # 白银会员
+    gold: 100000       # 黄金会员
+    platinum: 500000   # 白金会员
+    diamond: 1000000   # 钻石会员
+
+  # 会员等级贷款利率优惠
+  interest-rate:
+    none: 0            # 普通用户无优惠
+    bronze: 1          # 青铜会员基准利率
+    silver: -0.8       # 白银会员优惠0.8%
+    gold: -1.5         # 黄金会员优惠1.5%
+    platinum: -2.0      # 白金会员优惠2.0%
+    diamond: -2.5       # 钻石会员优惠2.5%
+
+  # 逾期惩罚机制
+  penalty:
+    # 惩罚效果列表
+    effects:
+      - effect: SLOW    # 缓慢效果
+        amplifier: 1    # 效果等级
+        duration: 100   # 持续时间(tick)
+      - effect: WEAKNESS # 虚弱效果
+        amplifier: 1
+        duration: 100
+    # 惩罚触发方式：
+    # - continuous: 持续性
+    # - interval: 间隔性
+    # - once: 一次性
+    type: continuous    
+    interval: 300      # interval模式的触发间隔(秒)
+
+#====================
+# 定期存款特殊设置
+#====================
+time-deposit:
+  # 是否允许提前支取定期存款
+  allow-early-withdraw: true
+  # 提前支取惩罚设置
+  early-withdraw-penalty:
+    # 惩罚类型：
+    # - interest: 不计算利息
+    # - percentage: 扣除本金一定比例
+    type: "interest"
+    percentage: 10     # percentage模式下的扣除比例(%)
+
+#====================
+# 界面设置
+#====================
+gui:
+  enabled: true        # 是否启用图形界面

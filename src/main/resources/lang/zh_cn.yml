@@ -1,0 +1,246 @@
+# 银行插件中文语言文件
+
+prefix: "[&e银行系统&6] "
+
+# 通用消息
+common:
+  no-permission: "{prefix}&c你没有权限使用此命令！"
+  player-only: "{prefix}&c该命令只能由玩家使用！"
+  invalid-amount: "{prefix}&c请输入有效的金额！"
+  amount-positive: "{prefix}&c金额必须大于0！"
+  insufficient-funds: "{prefix}&c你没有足够的钱！"
+  invalid-period: "{prefix}&c无效的存期！请选择：week(周存), month(月存), year(年存)"
+  invalid-command: "{prefix}&c未知的命令！使用 /bank help 查看帮助"
+  usage: "{prefix}&c用法: %s"
+
+# 存款相关消息
+deposit:
+  success: "{prefix}&a=== 存款成功 ==="
+  amount: "{prefix}&a存入金额：%.2f"
+  balance: "{prefix}&a活期余额：%.2f"
+  cash: "{prefix}&a现金余额：%.2f"
+  insufficient-funds: "{prefix}&c你没有足够的钱！"
+  success-title: "{prefix}&a=== 存款成功 ==="
+  input-amount: "{prefix}&a请输入存款金额"
+
+# 取款相关消息
+withdraw:
+  success: "{prefix}&a=== 取款成功 ==="
+  amount: "{prefix}&a取出金额：%.2f"
+  balance: "{prefix}&a活期余额：%.2f"
+  cash: "{prefix}&a现金余额：%.2f"
+  insufficient-funds: "{prefix}&c你的银行账户余额不足！"
+  success-title: "{prefix}&a=== 取款成功 ==="
+  input-amount: "{prefix}&a请输入取款金额"
+
+# 利息相关消息
+interest:
+  received: "{prefix} §a你收到了每日利息：§e%amount%"
+
+# 定期存款相关消息
+time-deposit:
+  success: "{prefix}&a成功存入 %.2f 到%s期定期账户！"
+  exists: "{prefix}&c你已经有一笔定期存款了！请等待到期后再存入。"
+  info: "{prefix}&a=== 定期存款信息 ==="
+  amount: "{prefix}&a存款金额：%.2f"
+  rate: "{prefix}&a年利率：%.2f%%"
+  days-passed: "{prefix}&a已存天数：%d"
+  days-left: "{prefix}&a剩余天数：%d"
+  status-mature: "{prefix}&a状态：&2可取出"
+  early-withdraw: "{prefix}&c定期存款未到期！还需等待 %d 天"
+  withdraw-success: "{prefix}&a定期存款到期！本金：%.2f，利息：%.2f"
+  early-penalty: "{prefix}&c由于提前支取，不计算利息！本金：%.2f"
+  early-penalty-percent: "{prefix}&c由于提前支取，扣除 %.1f%% 违约金！"
+  early-penalty-detail: "{prefix}&e本金：%.2f，违约金：%.2f，实际获得：%.2f"
+  usage: "{prefix}&c用法: /bank timedeposit <金额> <存期>"
+  period-options: "{prefix}&c存期选项: week(周存), month(月存), year(年存)"
+  early-withdraw-not-allowed: "{prefix}&c不允许提前支取定期存款！"
+  early-withdraw-no-interest: "{prefix}&c由于提前支取，不计算利息！本金：%.2f"
+  early-withdraw-penalty: "{prefix}&c由于提前支取，扣除 %.1f%% 违约金！"
+  early-withdraw-details: "{prefix}&e本金：%.2f，违约金：%.2f，实际获得：%.2f"
+  matured-withdraw: "{prefix}&a定期存款已到期！本金：%.2f，利息：%.2f，总计：%.2f"
+  no-deposit: "{prefix}&c您没有定期存款！"
+  input-amount: "{prefix}&a请输入定期存款金额"
+  input-period: "{prefix}&a请选择存期：week(周存), month(月存), year(年存)"
+
+# 贷款相关消息
+loan:
+  disabled: "{prefix}&c贷款系统未启用！"
+  exists: "{prefix}&c你已经有一笔未还清的贷款了！"
+  max-amount: "{prefix}&c超过最大贷款额度！最大额度：%.2f"
+  max-days: "{prefix}&c超过最长贷款期限！最长期限：%d天"
+  level-requirement: "{prefix}&c你的会员等级不足，无法申请贷款！"
+  success: "{prefix}&a=== 贷款成功 ==="
+  amount: "{prefix}&a贷款金额：%.2f"
+  period: "{prefix}&a贷款期限：%d天"
+  rate: "{prefix}&a贷款利率：%.2f%%"
+  total: "{prefix}&a应还金额：%.2f"
+  warning: "{prefix}&c请注意按时还款，逾期将受到惩罚！"
+  no-loan: "{prefix}&c你没有需要还款的贷款！"
+  repay-insufficient: "{prefix}&c你没有足够的钱还款！"
+  repay-amount: "{prefix}&c需要还款：%.2f，现金余额：%.2f"
+  repay-success: "{prefix}&a=== 还款成功 ==="
+  repay-principal: "{prefix}&a本金：%.2f"
+  repay-interest: "{prefix}&a利息：%.2f"
+  repay-total: "{prefix}&a总计：%.2f"
+  input-days: "{prefix}&a请输入贷款天数 (最长%d天)"
+  invalid-days: "{prefix}&c请输入有效的天数！"
+  input-amount: "{prefix}&a请输入贷款金额"
+  due: "{prefix}&a应还金额：%.2f"
+  insufficient-repay: "{prefix}&c你没有足够的钱还款！"
+  repay-details: "{prefix}&c需要还款：%.2f，现金余额：%.2f"
+  repay-title: "{prefix}&a=== 还款成功 ==="
+  system-disabled: "{prefix}&c贷款系统未启用！"
+  existing-loan: "{prefix}&c你已经有一笔未还清的贷款了！"
+  max-period: "{prefix}&c超过最长贷款期限！最长期限：%d天"
+  level-insufficient: "{prefix}&c你的会员等级不足，无法申请贷款！"
+  usage: "{prefix}&c用法: /bank loan <金额> <天数>"
+  invalid-number: "{prefix}&c请输入有效的数字！"
+  success-title: "{prefix}&a=== 贷款成功 ==="
+  success-amount: "{prefix}&a贷款金额：%.2f"
+  success-period: "{prefix}&a贷款期限：%d天"
+  success-rate: "{prefix}&a贷款利率：%.2f%%"
+  success-due: "{prefix}&a应还金额：%.2f"
+
+# 会员等级
+membership:
+  levels:
+    none: "{prefix}&7普通用户"
+    bronze: "{prefix}&6青铜会员"
+    silver: "{prefix}&7白银会员"
+    gold: "{prefix}&e黄金会员"
+    platinum: "{prefix}&b白金会员"
+    diamond: "{prefix}&b钻石会员"
+  bonus-info:
+    title: "\n{prefix}&a=== 会员加息信息 ==="
+    bronze: "{prefix}&6青铜会员：+0.5% (存款≥1万)"
+    silver: "{prefix}&7白银会员：+1.0% (存款≥5万)"
+    gold: "{prefix}&e黄金会员：+1.5% (存款≥10万)"
+    platinum: "{prefix}&b白金会员：+2.0% (存款≥50万)"
+    diamond: "{prefix}&b钻石会员：+3.0% (存款≥100万)"
+
+# 账户信息显示
+account:
+  title: "{prefix}&a======= 银行账户信息 ======="
+  cash: "{prefix}&a现金余额：%.2f"
+  demand-title: "{prefix}&a=== 活期存款信息 ==="
+  demand-amount: "{prefix}&a存款金额：%.2f"
+  demand-rate: "{prefix}&a基础年利率：%.2f%%"
+  demand-active: "{prefix}&a状态：&2已激活"
+  demand-inactive: "{prefix}&a状态：&c未激活"
+  demand-interest: "{prefix}&a预计今日利息：%.2f"
+  demand-activation: "{prefix}&c还需存入 %.2f 才能获得利息"
+  time-deposit-title: "{prefix}&a=== 定期存款信息 ==="
+  total-assets: "{prefix}&a总资产：%.2f"
+  next-settlement: "{prefix}&a下次结算时间：%s"
+  time-deposit-rates:
+    title: "\n{prefix}&a=== 定期存款利率 ==="
+    week: "{prefix}&a七日年化：%.2f%%"
+    month: "{prefix}&a月存年化：%.2f%%"
+    year: "{prefix}&a年存年化：%.2f%%"
+  time-deposit-info:
+    title: "\n{prefix}&a=== 定期存款信息 ==="
+    amount: "{prefix}&a存款金额：%.2f"
+    rate: "{prefix}&a年利率：%.2f%%"
+    days-passed: "{prefix}&a已存天数：%d"
+    days-left: "{prefix}&a剩余天数：%d"
+    expected-interest: "{prefix}&a预计到期收益：%.2f"
+    status-mature: "{prefix}&a状态：&2可取出"
+    current-interest: "{prefix}&a当前收益：%.2f"
+  membership:
+    title: "\n{prefix}&a=== 会员信息 ==="
+    current-level: "{prefix}&a当前等级：%s"
+    bonus-rate: "{prefix}&a额外加息：%.1f%%"
+    upgrade-needed: "{prefix}&e距离升级还需：%.2f"
+  total-assets:
+    title: "\n{prefix}&a=== 总资产信息 ==="
+    amount: "{prefix}&a总资产：%.2f"
+  next-payout: "\n{prefix}&a下次结算时间：%s"
+  dynamic-rate:
+    title: "\n{prefix}&a=== 利率信息 ==="
+    type: "{prefix}&a利率类型：&e动态"
+    last-update: "{prefix}&a上次调整：%s"
+    demand-range: "{prefix}&a活期利率范围：%.1f%% - %.1f%%"
+    time-range: "{prefix}&a定期利率范围：%.1f%% - %.1f%%"
+  loan-info:
+    title: "\n{prefix}&a=== 贷款信息 ==="
+    amount: "{prefix}&a贷款金额：%.2f"
+    date: "{prefix}&a贷款日期：%s"
+    period: "{prefix}&a贷款期限：%d天"
+    days-left: "{prefix}&a剩余天数：%d天"
+
+# 利率信息
+rates:
+  title: "{prefix}&a======= 银行利率信息 ======="
+  demand-title: "{prefix}&a=== 活期存款利率 ==="
+  time-title: "{prefix}&a=== 定期存款利率 ==="
+  week: "{prefix}&a七日年化：%.2f%%"
+  month: "{prefix}&a月存年化：%.2f%%"
+  year: "{prefix}&a年存年化：%.2f%%"
+  dynamic-title: "{prefix}&a=== 动态利率信息 ==="
+  last-update: "{prefix}&a上次调整：%s"
+  demand-range: "{prefix}&a活期利率范围：%.1f%% - %.1f%%"
+  time-range: "{prefix}&a定期利率范围：%.1f%% - %.1f%%"
+  tip: "{prefix}&e提示：定期存款利率更高，存期越长利率越高"
+  demand-base: "{prefix}&a活期基础利率：%.2f%%"
+
+# GUI 相关消息
+gui:
+  title: "§1§l银行系统"
+
+# 帮助信息
+help:
+  title: "{prefix}&a========= 银行系统帮助 ========="
+  commands:
+    help: "{prefix}&6/bank help &f- 显示帮助信息"
+    deposit: "{prefix}&6/bank deposit <金额> &f- 活期存款"
+    withdraw: "{prefix}&6/bank withdraw <金额> &f- 活期取款"
+    balance: "{prefix}&6/bank balance &f- 查看账户信息"
+    rates: "{prefix}&6/bank rates &f- 查看利率信息"
+    timedeposit: "{prefix}&6/bank timedeposit <金额> <week|month|year> &f- 定期存款"
+    timewithdraw: "{prefix}&6/bank timewithdraw &f- 定期取款"
+    confirm: "{prefix}&6/bank confirm &f- 确认取出定期存款"
+    loan: "{prefix}&6/bank loan <金额> <天数> &f- 申请贷款"
+    repay: "{prefix}&6/bank repay &f- 还款"
+  footer: "{prefix}&a================================"
+  tip: "{prefix}&e提示：定期存款利率更高，存期越长利率越高"
+  admin: "{prefix}&e/bank admin <set|add|remove> <玩家> <金额> &7- 管理玩家存款"
+
+# 管理员帮助
+admin:
+  title: "{prefix}&6=== 银行管理命令 ==="
+  help:
+    title: "{prefix}&6=== 银行管理命令 ==="
+    balance: "{prefix}&e/bank admin balance <set|add|remove> <玩家> <金额> [原因] &7- 管理玩家存款"
+    loan: "{prefix}&e/bank admin loan <clear|info> <玩家> [原因] &7- 管理玩家贷款"
+    log: "{prefix}&e/bank admin log <list|search> [玩家] [页码] &7- 查看操作日志"
+  no-permission: "{prefix}&c你没有权限使用此命令！"
+  no-permission-balance: "{prefix}&c你没有权限管理玩家存款！"
+  no-permission-loan: "{prefix}&c你没有权限管理玩家贷款！"
+  no-permission-log: "{prefix}&c你没有权限查看操作日志！"
+  usage-balance: "{prefix}&c用法: /bank admin balance <set|add|remove> <玩家> <金额> [原因]"
+  usage-loan: "{prefix}&c用法: /bank admin loan <clear|info> <玩家> [原因]"
+  usage-log: "{prefix}&c用法: /bank admin log <list|search> [玩家] [页码]"
+  player-not-found: "{prefix}&c找不到玩家：%s"
+  action-success: "{prefix}&a已%s %s 的存款 %.2f (原因: %s)"
+  notify-player: "{prefix}&e管理员已%s您的存款 %.2f (原因: %s)"
+  log:
+    no-logs: "{prefix}&c暂无操作日志！"
+    read-error: "{prefix}&c读取日志失败：%s"
+    recent-title: "{prefix}&6=== 最近操作日志 (第 %d/%d 页) ==="
+    player-title: "{prefix}&6=== %s 的操作日志 (第 %d/%d 页) ==="
+
+# 消息未找到提示
+error:
+  message-not-found:
+    deposit-input-amount: "{prefix}&c消息未找到: deposit.input-amount"
+    withdraw-input-amount: "{prefix}&c消息未找到: withdraw.input-amount"
+    time-deposit-input-amount: "{prefix}&c消息未找到: time-deposit.input-amount"
+    time-deposit-input-period: "{prefix}&c消息未找到: time-deposit.input-period"
+    rates-demand-base: "{prefix}&c消息未找到: rates.demand-base"
+
+# 日志相关消息
+log:
+  no-logs: "&c没有找到任何日志记录"
+  read-error: "&c读取日志时发生错误：%s"
+  write-error: "&c写入日志时发生错误：%s"
