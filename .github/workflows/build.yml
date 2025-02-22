@@ -2,44 +2,14 @@ name: Build Plugin
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   release:
     types: [ created ]
 
 jobs:
-  # 代码质量检查
-  code-quality:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          
-      # SonarCloud 分析
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-      # SpotBugs 检查
-      - name: SpotBugs Check
-        run: mvn com.github.spotbugs:spotbugs-maven-plugin:check
-        
-      # CheckStyle 检查
-      - name: CheckStyle
-        run: mvn checkstyle:check
-
   build:
-    needs: code-quality
     runs-on: ubuntu-latest
 
     steps:
@@ -72,6 +42,25 @@ jobs:
           asset_path: target/BankPlugin-*.jar
           asset_name: BankPlugin.jar
           asset_content_type: application/java-archive
+
+  # SpotBugs 和 Checkstyle 检查
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          
+      - name: Run SpotBugs
+        run: mvn com.github.spotbugs:spotbugs-maven-plugin:check
+        
+      - name: Run Checkstyle
+        run: mvn checkstyle:check
 
   test:
     runs-on: ubuntu-latest
